@@ -25,6 +25,8 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Tutorial Link](https://www.youtube.com/watch?v=PMva3v8K6h4&list=PLs_WqGRq69UiSaXX85NRUX4rkeiNP3K6l&index=1) Link used to do this tutorial
+I've followed a tutorial to learn about modules, controllers, services, DTO
 
 ## Project setup
 
