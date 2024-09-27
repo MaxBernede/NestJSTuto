@@ -1,5 +1,5 @@
 # Use postgres/example user/password credentials
-version: '3.9'
+# version: '3.9'
 
 services:
 
@@ -19,7 +19,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     restart: always
-    container_name: nestjs
+    container_name: pgadmin
     env_file: .env
     ports:
       - '5050:80'
@@ -27,6 +27,11 @@ services:
       - db
     networks:
       - backend
+    volumes:
+      - ./pgadmin/config/servers.json:/pgadmin4/servers.json  # Montez le fichier de configuration
+      - ./pgadmin/config/config_distro.py:/pgadmin4/config_distro.py
+      - ./pgadmin/config/logs:/var/log/pgadmin
+
 
 networks:
   backend:
@@ -36,31 +41,3 @@ networks:
 # to connect pgadmin : docker container ls
 # Get the id of postgres, then docker inspect [id]
 # then get the IP and add it to pgadmin
-
-# services:
-#   db:
-#     image: postgres
-#     restart: always
-#     env_file: .env
-#     container_name: postgres
-#     ports:
-#       - '5432:5432'
-#     # volumes:
-#     #   - ./pgdata:/var/lib/postgresql/data:z
-
-
-
-#   # app:
-  #   build:
-  #     context: backend
-  #     dockerfile: Dockerfile
-  #   container_name: nestjs
-  #   environment:
-  #     - PORT=${PORT}
-  #   ports:
-  #     - '3000:3000'
-  #   depends_on:
-  #     - db
-  #   volumes:
-  #     - ./src:/app/src
-    # restart: "always"

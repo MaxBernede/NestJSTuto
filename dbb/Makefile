@@ -38,11 +38,8 @@ fclean: clean
 	@docker volume rm $(shell docker volume ls -q) 2>/dev/null || true
 
 
-pg:
-	docker exec -it pgadmin /bin/sh
-
-post:
-	docker exec -it postgres /bin/sh
+nestjs:
+	docker exec -it netsjs /bin/bash
 
 ## Regular Colors ##############################################
 Color_Off	=	"\033[0m"			# Text Reset
