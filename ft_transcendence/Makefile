@@ -1,7 +1,7 @@
 DOCKER_COMPOSE = docker-compose.yml
 PROJECT_NAME = ft_transcendence
 
-all: build up
+all: rmlog build up
 
 build:
 	docker-compose -f $(DOCKER_COMPOSE) -p $(PROJECT_NAME) build
@@ -32,6 +32,9 @@ clean:
 	@docker network rm $(shell docker network ls -q ) 2>/dev/null || true
 	@docker network prune -f || true
 
+
+rmlog:
+	rm pgadmin/config/logs/*.log
 
 fclean: clean
 	@echo $(Yellow)Volumes erased$(Color_Off)
